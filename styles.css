@@ -41,9 +41,9 @@ a {
 }
 
 .page-shell {
-  width: min(calc(100% - 40px), var(--content));
-  margin: 0 auto;
-  padding: 24px 0 40px;
+  width: 100%;
+  margin: 0;
+  padding: 24px clamp(24px, 4vw, 64px) 40px;
 }
 
 .site-header {
@@ -51,6 +51,8 @@ a {
   align-items: center;
   justify-content: space-between;
   gap: 24px;
+  width: min(100%, var(--content));
+  margin: 0 auto;
   padding: 8px 0 28px;
 }
 
@@ -62,43 +64,19 @@ a {
 
 .hero {
   position: relative;
-  overflow: hidden;
-  border: 1px solid var(--border);
-  border-radius: calc(var(--radius-xl) + 6px);
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(247, 248, 245, 0.9)),
-    repeating-linear-gradient(
-      90deg,
-      rgba(31, 109, 78, 0.045) 0,
-      rgba(31, 109, 78, 0.045) 1px,
-      transparent 1px,
-      transparent 120px
-    );
-  box-shadow: var(--shadow);
-  padding: 68px 56px 56px;
-}
-
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(circle at 82% 18%, rgba(31, 109, 78, 0.12), transparent 22%),
-    radial-gradient(circle at 12% 84%, rgba(31, 109, 78, 0.08), transparent 18%);
-  pointer-events: none;
+  width: min(100%, var(--content));
+  margin: 0 auto;
+  padding: 28px 0 36px;
 }
 
 .hero-layout {
   position: relative;
   z-index: 1;
-  display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
-  gap: 36px;
-  align-items: start;
+  display: block;
 }
 
 .hero-copy {
-  max-width: 780px;
+  width: min(100%, 760px);
 }
 
 h1 {
@@ -118,7 +96,12 @@ h1 {
 
 .search-card {
   margin-top: 30px;
-  max-width: 100%;
+  width: min(100%, 760px);
+}
+
+.compare-section {
+  width: min(100%, var(--content));
+  margin: 24px auto 0;
 }
 
 .search-input-wrap {
@@ -190,20 +173,21 @@ h1 {
 .compare-card {
   position: relative;
   overflow: hidden;
-  padding: 30px;
+  padding: 24px;
   border: 1px solid var(--border);
-  border-radius: var(--radius-xl);
+  border-radius: 26px;
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(242, 245, 240, 0.96)),
-    linear-gradient(135deg, rgba(31, 109, 78, 0.08), transparent 65%);
-  box-shadow: 0 12px 34px rgba(17, 21, 20, 0.05);
+    linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(242, 245, 240, 0.93)),
+    linear-gradient(135deg, rgba(31, 109, 78, 0.06), transparent 65%);
+  box-shadow: none;
 }
 
 .compare-card h2 {
-  margin: 8px 0 18px;
-  font-size: 1.46rem;
-  line-height: 1.08;
-  letter-spacing: -0.04em;
+  margin: 8px 0 16px;
+  font-size: 1.1rem;
+  line-height: 1.18;
+  letter-spacing: -0.03em;
+  max-width: 18ch;
 }
 
 .compare-label {
@@ -218,46 +202,51 @@ h1 {
 .price-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 12px;
+  gap: 10px;
 }
 
 .price-card {
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas:
+    "retailer retailer"
+    "price button";
   align-items: center;
-  gap: 12px;
-  padding: 14px 14px 12px;
-  border-radius: 16px;
+  gap: 6px 8px;
+  padding: 12px 12px 11px;
+  border-radius: 14px;
   border: 1px solid rgba(17, 21, 20, 0.08);
   background: var(--surface);
   min-height: 0;
 }
 
 .price-card strong {
-  flex: 1;
+  grid-area: retailer;
   min-width: 0;
-  font-size: 0.84rem;
+  font-size: 0.76rem;
   letter-spacing: -0.03em;
   opacity: 0.82;
+  white-space: nowrap;
 }
 
 .price-card span {
-  flex: none;
-  font-size: clamp(1.15rem, 1.7vw, 1.45rem);
+  grid-area: price;
+  font-size: 0.98rem;
   font-weight: 800;
-  letter-spacing: -0.05em;
+  letter-spacing: -0.04em;
   line-height: 1;
   white-space: nowrap;
 }
 
 .price-card button {
-  flex: none;
+  grid-area: button;
   border: 0;
   border-radius: 999px;
-  padding: 0.46rem 0.86rem;
+  padding: 0.38rem 0.68rem;
   background: rgba(17, 21, 20, 0.08);
   color: currentColor;
   font: inherit;
-  font-size: 0.82rem;
+  font-size: 0.74rem;
   font-weight: 700;
   cursor: pointer;
 }
@@ -310,8 +299,7 @@ h1 {
 
 @media (max-width: 900px) {
   .page-shell {
-    width: min(calc(100% - 28px), var(--content));
-    padding-top: 14px;
+    padding: 14px 16px 28px;
   }
 
   .site-header {
@@ -322,13 +310,7 @@ h1 {
   }
 
   .hero {
-    padding: 34px 22px 24px;
-    border-radius: 24px;
-  }
-
-  .hero-layout {
-    grid-template-columns: 1fr;
-    gap: 22px;
+    padding: 22px 0 24px;
   }
 
   h1 {
@@ -361,13 +343,22 @@ h1 {
     margin-top: 12px;
   }
 
+  .compare-section {
+    width: 100%;
+  }
+
   .compare-card {
     padding: 24px;
-    border-radius: 24px;
+    border-radius: 20px;
   }
 
   .price-grid {
     grid-template-columns: 1fr;
+  }
+
+  .site-header,
+  .hero {
+    width: 100%;
   }
 }
 
@@ -386,7 +377,7 @@ h1 {
   }
 
   .price-card {
-    padding: 12px 12px 10px;
-    border-radius: 14px;
+    padding: 10px 10px 9px;
+    border-radius: 12px;
   }
 }
