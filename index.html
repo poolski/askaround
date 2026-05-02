@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="askaround is a UK hardware comparison page."
+    />
+    <title>askaround</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="site-header">
+        <a class="brand" href="/" aria-label="askaround home">askaround</a>
+      </header>
+
+      <main>
+        <section class="hero">
+          <div class="hero-layout">
+            <div class="hero-copy">
+              <h1>Search hardware, compare prices, and pick the best deal.</h1>
+              <p class="intro">
+                A simple UK hardware comparison page for finding similar products and checking
+                prices side by side.
+              </p>
+
+              <form class="search-card" action="#" method="get">
+                <label class="sr-only" for="search">Search products</label>
+                <div class="search-input-wrap">
+                  <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <path
+                      d="M10.5 18.5a8 8 0 1 1 0-16 8 8 0 0 1 0 16Zm5.6-1.8 4.3 4.3"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                  <input
+                    id="search"
+                    name="q"
+                    type="text"
+                    placeholder="Search timber, fixings, tools, sheet materials"
+                  />
+                  <button type="button" aria-label="Search placeholder">Search</button>
+                </div>
+                <p class="search-hint">Try a product, size, or material.</p>
+              </form>
+            </div>
+
+            <aside class="compare-card" aria-label="Example price comparison">
+              <p class="compare-label">Example comparison</p>
+              <h2>18mm Hardwood Plywood 2440x1220</h2>
+              <div class="price-grid">
+                <div class="price-card is-cheapest">
+                  <strong>Wickes</strong>
+                  <span>£32.50</span>
+                  <button type="button">Buy</button>
+                </div>
+                <div class="price-card is-middle">
+                  <strong>B&Q</strong>
+                  <span>£34.00</span>
+                  <button type="button">Buy</button>
+                </div>
+                <div class="price-card is-expensive">
+                  <strong>Screwfix</strong>
+                  <span>£35.95</span>
+                  <button type="button">Buy</button>
+                </div>
+              </div>
+              <p class="compare-footnote">Static preview only. Results will appear here later.</p>
+            </aside>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
